@@ -1,9 +1,10 @@
 """
-CP1404
+CP1404/CP5632 Practical
 State names in a dictionary
+File has been reformatted and updated to meet practical requirements
 """
 
-# Dictionary of Australian state abbreviations and names
+# Constant dictionary of Australian state abbreviations and their full names
 CODE_TO_NAME = {
     "QLD": "Queensland",
     "NSW": "New South Wales",
@@ -15,12 +16,16 @@ CODE_TO_NAME = {
     "SA": "South Australia"
 }
 
-print(CODE_TO_NAME)
+# Print all states and names neatly lined up
+for code, name in CODE_TO_NAME.items():
+    print(f"{code:3} is {name}")
 
-state_code = input("Enter short state: ").upper()
-while state_code != "":
-    if state_code in CODE_TO_NAME:
-        print(f"{state_code} is {CODE_TO_NAME[state_code]}")
-    else:
+# Ask the user for a short state code (case-insensitive)
+state = input("Enter short state: ").strip().upper()
+while state != "":
+    # Use EAFP (Easier to Ask Forgiveness than Permission) approach
+    try:
+        print(f"{state} is {CODE_TO_NAME[state]}")
+    except KeyError:
         print("Invalid short state")
-    state_code = input("Enter short state: ").upper()
+    state = input("Enter short state: ").strip().upper()
