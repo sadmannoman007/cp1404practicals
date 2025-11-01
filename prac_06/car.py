@@ -1,5 +1,5 @@
 """
-CP1404/CP5632 Practical
+CP1404
 Car class
 """
 
@@ -15,7 +15,7 @@ class Car:
         """
         self.name = name
         self.fuel = fuel
-        self._odometer = 0  # Non-public attribute
+        self._odometer = 0  # Non-public attribute (internal use)
 
     def __str__(self):
         """Return a string representation of a Car object."""
@@ -28,8 +28,9 @@ class Car:
     def drive(self, distance):
         """Drive the car a given distance.
 
-        Drive given distance if car has enough fuel
-        or drive until fuel runs out and return distance actually driven.
+        Drive the given distance if the car has enough fuel,
+        or drive until the fuel runs out.
+        Return the distance actually driven.
         """
         if distance > self.fuel:
             distance = self.fuel
